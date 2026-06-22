@@ -77,13 +77,6 @@ export const navigation = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const aboutContent = {
-  introduction: "",
-  vision: "",
-  mission: "",
-  beliefs: [] as Array<{ title: string; description: string }>,
-};
-
 export const footerContent = {
   description:
     "Worship with Gospel Pillars Church UK and connect with a growing church family across multiple locations.",

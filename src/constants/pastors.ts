@@ -17,18 +17,18 @@ const createPastor = (id: string, name: string, city: string): Person => ({
 export const branchPastors: Person[] = [
   createPastor("london-pastor", "Pst. Kingsley Igharo", "London"),
   createPastor("liverpool-pastor", "Pst. Kenneth Uchemefuna", "Liverpool"),
-  createPastor("luton-pastor", "Pst. Kenneth Uchemefuna", "Luton"),
-  createPastor("newcastle-pastor", "Pst. Kenneth Uchemefuna", "Newcastle"),
-  createPastor("glasgow-pastor", "Pst. Kenneth Uchemefuna", "Glasgow"),
+  createPastor("luton-pastor", "Pst. Jaysil Utibe", "Luton"),
+  createPastor("newcastle-pastor", "Pst. Bobby Omorodion", "Newcastle"),
+  createPastor("glasgow-pastor", "Pst. Ihuoma Ekwueme", "Glasgow"),
   createPastor(
     "middlesborough-pastor",
-    "Pst. Kenneth Uchemefuna",
-    "Middlesborough",
+    "Pst. Chuks OwenKings",
+    "Middlesbrough",
   ),
-  createPastor("sunderland-pastor", "Pst. Kenneth Uchemefuna", "Sunderland"),
+  createPastor("sunderland-pastor", "Pst. Peter Bardi", "Sunderland"),
   createPastor(
     "milton-keynes-pastor",
-    "Pst. Kenneth Uchemefuna",
+    "Pst. Austine Mcwealth",
     "Milton Keynes",
   ),
 ];

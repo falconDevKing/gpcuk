@@ -131,6 +131,7 @@ export type MinistryArm = {
   website: string;
   email: string;
   phone: string;
+  whatsapp?: string;
   image: ImageData;
   social: SocialLinks;
 };

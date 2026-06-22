@@ -1,3 +1,4 @@
+export * from "./about";
 export * from "./branches";
 export * from "./church";
 export * from "./contact";
@@ -11,8 +12,8 @@ export * from "./services";
 export * from "./types";
 
 import { branches } from "./branches";
+import { aboutPage } from "./about";
 import {
-  aboutContent,
   appContact,
   churchIdentity,
   footerContent,
@@ -52,7 +53,7 @@ export const siteData = {
     sections: homepageSections,
     experiences: churchExperiences,
   },
-  about: aboutContent,
+  about: aboutPage,
   leadership: churchLeadership,
   pastors: branchPastors,
   ministryArms,
