@@ -9,6 +9,7 @@ import {
   footerCta,
   giving,
   navigation,
+  planVisitWhatsAppUrl,
   toTelephoneHref,
 } from "@/constants";
 
@@ -40,10 +41,10 @@ export function SiteFooter() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
               <Button asChild className="bg-amber-400 text-zinc-950">
-                <Link href="/contact">
+                <a href={planVisitWhatsAppUrl} target="_blank" rel="noreferrer">
                   Plan Your Visit
                   <ArrowRight data-icon="inline-end" className="size-4" />
-                </Link>
+                </a>
               </Button>
               {giving.enabled && giving.url ? (
                 <Button

@@ -50,7 +50,6 @@ const createBranch = ({
 
 const liverpoolSocial: SocialLinks = {
   facebook: "https://www.facebook.com/gpclewisham",
-  whatsapp: "https://wa.me/447733732649",
   instagram: "https://www.instagram.com/gpc.lewishamlondon/",
   tiktok: "https://www.tiktok.com/@gpcliverpool",
 };
@@ -81,7 +80,6 @@ export const branches: Branch[] = [
     pastorId: "london-pastor",
     social: {
       facebook: "https://www.facebook.com/gpclewisham",
-      whatsapp: "https://wa.me/447873652025",
       instagram: "https://www.instagram.com/gpc.lewishamlondon/",
       tiktok: "https://www.tiktok.com/@gpc.lewisham",
     },

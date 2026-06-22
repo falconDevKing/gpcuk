@@ -1,4 +1,5 @@
 import type { ExperienceItem, HeroSlide } from "./types";
+import { planVisitWhatsAppUrl } from "./church";
 
 export const heroSlides: HeroSlide[] = [
   {
@@ -9,7 +10,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Find belonging, encouragement, and a church family ready to welcome you.",
     image: { src: "", alt: "Gospel Pillars Church worship" },
-    primaryCta: { label: "Plan Your Visit", href: "/contact" },
+    primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },
   {
@@ -20,7 +21,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Come as you are and discover a church family shaped by worship and the Word.",
     image: { src: "", alt: "Gospel Pillars Church community" },
-    primaryCta: { label: "Plan Your Visit", href: "/contact" },
+    primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },
 ];
@@ -44,13 +45,12 @@ export const wordForTheYear = {
     src: "/assets/word-for-the-year-banner.jpeg",
     alt: "2026 Glory, Overflow and Dominion banner",
   },
-  learnMoreHref: "/about",
 };
 
 export const prophetFeature = {
   personId: "prophet-isaiah-macwealth",
   description:
-    "Prophet Isaiah Macwealth is the Global President of Gospel Pillars Church.",
+    "Prophet Isaiah Macwealth is the Global President of Gospel Pillars Church and leads the ministry with a vision to raise believers who are grounded in God's Word and equipped to influence their world. His Word-centred teaching and prophetic ministry continue to strengthen faith, inspire prayer, and draw people into deeper fellowship with God across nations. Through his leadership, the Gospel Pillars family is growing as a global community committed to worship, discipleship, and kingdom service.",
   learnMoreHref: "/about",
 };
 

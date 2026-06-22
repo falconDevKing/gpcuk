@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, EB_Garamond } from "next/font/google";
+import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { churchIdentity, seo } from "@/constants";
 import "./globals.css";
@@ -49,6 +50,7 @@ export default function RootLayout({
       className={`${ebGaramond.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <SiteHeader />
         {children}
         <SiteFooter />
       </body>

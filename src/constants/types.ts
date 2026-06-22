@@ -7,7 +7,6 @@ export type SocialLinks = {
   facebook: string;
   instagram: string;
   youtube?: string;
-  whatsapp: string;
   tiktok?: string;
 };
 
@@ -134,4 +133,13 @@ export type MinistryArm = {
   phone: string;
   image: ImageData;
   social: SocialLinks;
+};
+
+export type ContactFormPayload = {
+  name: string;
+  email: string;
+  phone: string;
+  preferredLocation?: string;
+  message: string;
+  company?: string;
 };

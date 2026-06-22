@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CalendarDays,
-  HeartHandshake,
-  Music2,
-  Phone,
-  Users,
-} from "lucide-react";
+import { ArrowRight, HeartHandshake, Music2, Phone, Users } from "lucide-react";
 
 import { HeroCarousel } from "@/components/home/hero-carousel";
 import { Button } from "@/components/ui/button";
@@ -19,11 +12,9 @@ import {
   formatServiceTime,
   galleryItems,
   getLeaderById,
-  giving,
   heroSlides,
   homepageSections,
   nationwideServiceTimes,
-  navigation,
   prophetFeature,
   toTelephoneHref,
   welcomeContent,
@@ -71,69 +62,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#fffdf7] text-zinc-950">
-      <header className="sticky top-0 z-50 border-b border-amber-200/70 bg-white/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="relative flex size-12 items-center justify-center overflow-hidden rounded-lg bg-zinc-950">
-              <Image
-                src={churchIdentity.logo.src}
-                alt={churchIdentity.logo.alt}
-                fill
-                sizes="48px"
-                className="object-contain p-1"
-                priority
-              />
-            </span>
-            <span className="leading-tight">
-              <span className="font-display block text-xl font-semibold">
-                Gospel Pillars
-              </span>
-              <span className="text-sm text-zinc-600">Church UK</span>
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-7 text-sm font-semibold text-zinc-700 md:flex">
-            {navigation
-              .filter((item) => item.href !== "/")
-              .map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-          </nav>
-
-          <div className="hidden items-center gap-3 md:flex">
-            {giving.enabled && giving.url ? (
-              <Button
-                asChild
-                variant="outline"
-                className="border-amber-300 bg-white text-zinc-950"
-              >
-                <Link href={giving.url}>
-                  {giving.label}
-                  <ArrowRight data-icon="inline-end" className="size-4" />
-                </Link>
-              </Button>
-            ) : (
-              <Button variant="outline" disabled>
-                {giving.unavailableLabel}
-              </Button>
-            )}
-            <Button asChild className="bg-amber-500 text-zinc-950">
-              <Link href="/contact">
-                Plan Your Visit
-                <CalendarDays data-icon="inline-end" className="size-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </header>
-
       <HeroCarousel slides={heroSlides} fallbackImage={churchIdentity.logo} />
 
       <section className="bg-[#efe4c8] px-5 py-20 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-lg border border-amber-300/50 bg-gradient-to-br from-zinc-950 via-zinc-900 to-amber-900 p-7 text-white shadow-2xl shadow-amber-950/15 sm:p-10">
+          <div className="overflow-hidden rounded-lg border border-amber-300/50 bg-linear-to-br from-zinc-950 via-zinc-900 to-amber-900 p-7 text-white shadow-2xl shadow-amber-950/15 sm:p-10">
             <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
                 <p className="text-sm font-bold tracking-[0.45em] text-amber-300 uppercase">
@@ -153,7 +86,7 @@ export default function Home() {
             {nationwideServiceTimes.map((service) => (
               <article
                 key={service.id}
-                className="rounded-lg bg-gradient-to-br from-zinc-950 via-zinc-900 to-amber-700 p-6 text-white shadow-xl shadow-amber-950/10"
+                className="rounded-lg bg-linear-to-br from-zinc-950 via-zinc-900 to-amber-700 p-6 text-white shadow-xl shadow-amber-950/10"
               >
                 <p className="text-sm font-bold tracking-[0.35em] text-amber-300 uppercase">
                   {service.name}
@@ -167,7 +100,7 @@ export default function Home() {
               </article>
             ))}
 
-            <article className="rounded-lg bg-gradient-to-br from-zinc-950 via-zinc-900 to-amber-700 p-6 text-white shadow-xl shadow-amber-950/10">
+            <article className="rounded-lg bg-linear-to-br from-zinc-950 via-zinc-900 to-amber-700 p-6 text-white shadow-xl shadow-amber-950/10">
               <p className="text-sm font-bold tracking-[0.35em] text-amber-300 uppercase">
                 Planning a Visit?
               </p>
@@ -198,18 +131,14 @@ export default function Home() {
               </p>
             )}
             <p className="mt-7 text-lg leading-8 text-zinc-700">
-              {wordForTheYear.scriptureText} {wordForTheYear.scriptureReference}
-              .
+              {wordForTheYear.scriptureText}
             </p>
-            <Button asChild className="mt-8 bg-amber-500 text-zinc-950">
-              <Link href={wordForTheYear.learnMoreHref}>
-                Learn More
-                <ArrowRight data-icon="inline-end" className="size-4" />
-              </Link>
-            </Button>
+            <p className="mt-4 text-sm font-bold tracking-[0.22em] text-amber-700 uppercase">
+              {wordForTheYear.scriptureReference}
+            </p>
           </div>
 
-          <div className="relative min-h-[320px] overflow-hidden rounded-lg border border-amber-200 bg-zinc-950 shadow-2xl shadow-amber-950/10 sm:min-h-[430px]">
+          <div className="relative min-h-80 overflow-hidden rounded-lg border border-amber-200 bg-zinc-950 shadow-2xl shadow-amber-950/10 sm:min-h-107.5">
             <Image
               src={wordForTheYear.image.src || churchIdentity.logo.src}
               alt={wordForTheYear.image.alt || churchIdentity.logo.alt}
@@ -224,13 +153,13 @@ export default function Home() {
       {prophet && (
         <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div className="relative min-h-[680px] overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 shadow-xl shadow-zinc-950/10 sm:min-h-[760px] lg:min-h-[860px]">
+            <div className="relative h-105 max-h-[70vh] overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 shadow-xl shadow-zinc-950/10 sm:h-125 lg:h-140">
               <Image
                 src={prophet.image.src || churchIdentity.logo.src}
                 alt={prophet.image.alt || churchIdentity.logo.alt}
                 fill
                 sizes="(min-width: 1024px) 42vw, 92vw"
-                className="object-cover object-top"
+                className="object-contain object-top"
               />
             </div>
             <div>
@@ -279,7 +208,7 @@ export default function Home() {
               return (
                 <article
                   key={branch.id}
-                  className="group relative min-h-[390px] overflow-hidden rounded-lg border border-amber-200 bg-zinc-950 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+                  className="group relative min-h-97.5 overflow-hidden rounded-lg border border-amber-200 bg-zinc-950 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 >
                   <Image
                     src={branchImage.src}
@@ -290,7 +219,7 @@ export default function Home() {
                       branch.image.src ? "object-cover" : "object-contain p-12"
                     }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/10" />
+                  <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/10" />
 
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white">
                     <h3 className="font-display text-4xl font-semibold">
@@ -394,7 +323,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-10 grid auto-rows-[260px] gap-4 md:grid-cols-3">
+            <div className="auto-rows-65 mt-10 grid gap-4 md:grid-cols-3">
               {featuredGallery.map((item) => {
                 const image = item.image.src ? item.image : churchIdentity.logo;
 
@@ -416,7 +345,7 @@ export default function Home() {
                           : "object-cover"
                       }`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/35 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/35 to-transparent" />
                     <div className="absolute right-0 bottom-0 left-0 p-5 text-white">
                       <h3 className="font-display text-3xl font-semibold">
                         {item.title}
@@ -453,7 +382,7 @@ export default function Home() {
               return (
                 <article
                   key={experience.id}
-                  className={`rounded-lg border border-zinc-200 bg-gradient-to-br p-7 shadow-sm ${experienceColors[experience.color]}`}
+                  className={`rounded-lg border border-zinc-200 bg-linear-to-br p-7 shadow-sm ${experienceColors[experience.color]}`}
                 >
                   <div className="mb-20 flex size-14 items-center justify-center rounded-lg bg-white/85 shadow-sm">
                     <Icon className="size-7 text-zinc-950" aria-hidden="true" />

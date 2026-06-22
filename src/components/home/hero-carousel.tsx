@@ -101,7 +101,19 @@ export function HeroCarousel({ slides, fallbackImage }: HeroCarouselProps) {
               size="lg"
               className="bg-amber-400 text-base text-zinc-950 hover:bg-amber-300"
             >
-              <Link href={slide.primaryCta.href}>{slide.primaryCta.label}</Link>
+              {slide.primaryCta.href.startsWith("http") ? (
+                <a
+                  href={slide.primaryCta.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {slide.primaryCta.label}
+                </a>
+              ) : (
+                <Link href={slide.primaryCta.href}>
+                  {slide.primaryCta.label}
+                </Link>
+              )}
             </Button>
             <Button
               asChild

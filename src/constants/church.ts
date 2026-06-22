@@ -15,7 +15,7 @@ export const churchIdentity = {
     src: "/assets/logo.png",
     alt: "Gospel Pillars Church UK logo",
   } satisfies ImageData,
-  favicon: "/favicon.ico",
+  favicon: "/icon.png",
 };
 
 export const appContact = {
@@ -25,6 +25,7 @@ export const appContact = {
   phoneDisplay: "+44 7886 887994",
   phoneHref: "+44 7886 887994",
   whatsapp: "+44 7882 483329",
+  whatsappLink: "https://wa.me/447882483329",
   officeAddress: {
     venueName: "The Rehoboth",
     line1: "Capital House,",
@@ -38,10 +39,14 @@ export const appContact = {
     facebook: "https://www.facebook.com/gospelpillarsuk",
     instagram: "https://www.instagram.com/gpc.lewishamlondon/",
     youtube: "https://www.youtube.com/@gospelpillarsuk",
-    whatsapp: "https://wa.me/447882483329",
     tiktok: "https://www.tiktok.com/@gospelpillars_uk",
   } satisfies SocialLinks,
 };
+
+export const planVisitWhatsAppMessage =
+  "Hello Gospel Pillars Church UK, I would like to plan a visit. I stay in [YOUR_LOCATION], please help me with the nearest branch, service times, and anything I should know before attending.";
+
+export const planVisitWhatsAppUrl = `${appContact.whatsappLink}?text=${encodeURIComponent(planVisitWhatsAppMessage)}`;
 
 export const giving = {
   enabled: false,

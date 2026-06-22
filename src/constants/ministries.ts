@@ -29,7 +29,6 @@ export const ministryArms: MinistryArm[] = [
     image: { src: "", alt: "OneSound Charity" },
     social: {
       facebook: "https://www.facebook.com/profile.php?id=61577841322740",
-      whatsapp: "https://wa.me/447518521921",
       instagram: "https://www.instagram.com/gpc.lewishamlondon/",
       youtube: "https://www.youtube.com/@gospelpillarsuk",
       tiktok: "https://www.tiktok.com/@gospelpillars_uk",
