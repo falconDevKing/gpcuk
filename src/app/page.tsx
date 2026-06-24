@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, HeartHandshake, Music2, Phone, Users } from "lucide-react";
 
+import { EventsCarousel } from "@/components/home/events-carousel";
 import { HeroCarousel } from "@/components/home/hero-carousel";
+import { FacebookIcon, InstagramIcon } from "@/components/social-icons";
 import { Button } from "@/components/ui/button";
 import {
   appContact,
@@ -17,6 +19,7 @@ import {
   nationwideServiceTimes,
   prophetFeature,
   toTelephoneHref,
+  upcomingEvents,
   welcomeContent,
   wordForTheYear,
 } from "@/constants";
@@ -33,28 +36,6 @@ const experienceColors = {
   sky: "from-sky-300 via-cyan-100 to-white",
   emerald: "from-emerald-300 via-lime-100 to-white",
 };
-
-function FacebookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M14 8.5h2.2V5.2c-.4-.1-1.7-.2-3.2-.2-3.1 0-5.2 1.9-5.2 5.4v3H4.5V17h3.3v7h4v-7h3.3l.5-3.6h-3.8v-2.7c0-1 .3-2.2 2.2-2.2Z"
-      />
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm8.7 2.1a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8ZM12 7.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2Zm0 2a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Z"
-      />
-    </svg>
-  );
-}
 
 export default function Home() {
   const prophet = getLeaderById(prophetFeature.personId);
@@ -116,6 +97,17 @@ export default function Home() {
         </div>
       </section>
 
+      {upcomingEvents.length > 0 && (
+        <section className="bg-zinc-950 px-5 py-16 sm:px-8 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="mb-6 text-center text-sm font-bold tracking-[0.35em] text-amber-300 uppercase">
+              Upcoming Events
+            </p>
+            <EventsCarousel events={upcomingEvents} />
+          </div>
+        </section>
+      )}
+
       <section className="bg-[#efe4c8] px-5 py-20 sm:px-8 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="rounded-lg border border-amber-200 bg-white/85 p-8 shadow-xl shadow-amber-950/10 sm:p-10">
@@ -141,10 +133,18 @@ export default function Home() {
           <div className="relative min-h-80 overflow-hidden rounded-lg border border-amber-200 bg-zinc-950 shadow-2xl shadow-amber-950/10 sm:min-h-107.5">
             <Image
               src={wordForTheYear.image.src || churchIdentity.logo.src}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 52vw, 92vw"
+              className="object-cover blur-md brightness-[0.65]"
+              aria-hidden="true"
+            />
+            <Image
+              src={wordForTheYear.image.src || churchIdentity.logo.src}
               alt={wordForTheYear.image.alt || churchIdentity.logo.alt}
               fill
               sizes="(min-width: 1024px) 52vw, 92vw"
-              className="object-cover"
+              className="object-contain p-4 sm:p-6"
             />
           </div>
         </div>
@@ -330,7 +330,7 @@ export default function Home() {
                 return (
                   <article
                     key={item.id}
-                    className={`group relative overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 shadow-sm ${
+                    className={`group relative h-65 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 shadow-sm ${
                       item.layout === "wide" ? "md:col-span-2" : ""
                     }`}
                   >

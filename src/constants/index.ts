@@ -6,6 +6,7 @@ export * from "./events";
 export * from "./gallery";
 export * from "./homepage";
 export * from "./leadership";
+export * from "./locations";
 export * from "./ministries";
 export * from "./pastors";
 export * from "./services";
@@ -23,7 +24,8 @@ import {
 } from "./church";
 import { contactPage } from "./contact";
 import { events } from "./events";
-import { galleryItems } from "./gallery";
+import { galleryItems, galleryPage } from "./gallery";
+import { locationsPage } from "./locations";
 import {
   churchExperiences,
   footerCta,
