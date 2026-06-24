@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   description: galleryPage.metadata.description,
 };
 
+const colSpanClass: Record<number, string> = {
+  1: "",
+  2: "sm:col-span-2",
+  3: "sm:col-span-3",
+};
+
+const rowSpanClass: Record<number, string> = {
+  1: "",
+  2: "row-span-2",
+  3: "row-span-3",
+};
+
 export default function GalleryPage() {
   return (
     <main className="bg-[#fffdf7] text-zinc-950">
@@ -26,19 +38,18 @@ export default function GalleryPage() {
       </section>
 
       <section className="bg-[#efe4c8] px-5 py-20 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl columns-2 gap-4 space-y-4 sm:columns-3 lg:columns-4">
+        <div className="mx-auto grid max-w-7xl auto-rows-[200px] grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {galleryPhotos.map((photo, index) => (
             <div
               key={`${photo.src}-${index}`}
-              className="group break-inside-avoid overflow-hidden rounded-lg border border-amber-300/50 shadow-sm"
+              className={`group relative overflow-hidden rounded-lg border border-amber-300/50 shadow-sm ${colSpanClass[photo.colSpan ?? 1] ?? ""} ${rowSpanClass[photo.rowSpan ?? 1] ?? ""}`}
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
-                width={600}
-                height={800}
+                fill
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-                className="block w-full transition duration-500 group-hover:scale-105"
+                className="object-cover transition duration-500 group-hover:scale-105"
               />
             </div>
           ))}

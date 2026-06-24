@@ -28,11 +28,11 @@ export const appContact = {
   whatsappLink: "https://wa.me/447882483329",
   officeAddress: {
     venueName: "The Rehoboth",
-    line1: "Capital House,",
-    line2: "47 Rushey Green.",
-    city: "London",
+    line1: "Main Hall, Harris Girls Academy Bromley,",
+    line2: "Lennard Road",
+    city: "Beckenham",
     county: "London",
-    postcode: "SE6 4AS",
+    postcode: "BR3 1QP",
     country: "United Kingdom",
   } satisfies Address,
   social: {

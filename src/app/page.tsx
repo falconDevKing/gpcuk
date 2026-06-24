@@ -12,7 +12,7 @@ import {
   churchExperiences,
   churchIdentity,
   formatServiceTime,
-  galleryItems,
+  galleryPhotos,
   getLeaderById,
   heroSlides,
   homepageSections,
@@ -39,7 +39,7 @@ const experienceColors = {
 
 export default function Home() {
   const prophet = getLeaderById(prophetFeature.personId);
-  const featuredGallery = galleryItems.filter((item) => item.featured);
+  const previewPhotos = galleryPhotos.slice(0, 9);
 
   return (
     <main className="min-h-screen bg-[#fffdf7] text-zinc-950">
@@ -144,7 +144,7 @@ export default function Home() {
               alt={wordForTheYear.image.alt || churchIdentity.logo.alt}
               fill
               sizes="(min-width: 1024px) 52vw, 92vw"
-              className="object-contain p-4 sm:p-6"
+              className="object-contain p-2 sm:p-3"
             />
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function Home() {
         </div>
       </section>
 
-      {featuredGallery.length > 0 && (
+      {previewPhotos.length > 0 && (
         <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -323,42 +323,22 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="auto-rows-65 mt-10 grid gap-4 md:grid-cols-3">
-              {featuredGallery.map((item) => {
-                const image = item.image.src ? item.image : churchIdentity.logo;
-
-                return (
-                  <article
-                    key={item.id}
-                    className={`group relative h-65 overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 shadow-sm ${
-                      item.layout === "wide" ? "md:col-span-2" : ""
-                    }`}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={item.image.alt || image.alt}
-                      fill
-                      sizes="(min-width: 768px) 33vw, 92vw"
-                      className={`transition duration-500 group-hover:scale-105 ${
-                        image.src === churchIdentity.logo.src
-                          ? "object-contain p-12"
-                          : "object-cover"
-                      }`}
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/35 to-transparent" />
-                    <div className="absolute right-0 bottom-0 left-0 p-5 text-white">
-                      <h3 className="font-display text-3xl font-semibold">
-                        {item.title}
-                      </h3>
-                      {item.description && (
-                        <p className="mt-2 text-sm font-semibold text-white/75">
-                          {item.description}
-                        </p>
-                      )}
-                    </div>
-                  </article>
-                );
-              })}
+            <div className="mt-10 columns-2 gap-3 space-y-3 sm:columns-3">
+              {previewPhotos.map((photo, index) => (
+                <div
+                  key={`${photo.src}-${index}`}
+                  className="group break-inside-avoid overflow-hidden rounded-lg border border-zinc-200 shadow-sm"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={600}
+                    height={800}
+                    sizes="(min-width: 640px) 33vw, 50vw"
+                    className="block w-full transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>

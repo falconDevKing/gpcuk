@@ -48,7 +48,7 @@ export const churchLeadership: Person[] = [
       "Rev Owen Igharo leads the Gospel Pillars Church UK Division and supports its growing family of local branches.",
     fullBio:
       "Rev Owen Igharo leads the Gospel Pillars Church UK Division, supporting local pastors and branches as the church grows in worship, discipleship, fellowship, and service across the United Kingdom. Under his leadership, the UK Division continues to strengthen its community presence, develop emerging leaders, and create welcoming spaces where people can encounter God and grow in faith.",
-    image: { src: "", alt: "Rev Owen Igharo" },
+    image: { src: "/assets/rev-owen-igharo-2.jpg", alt: "Rev Owen Igharo" },
     email: "",
     phone: "",
   },

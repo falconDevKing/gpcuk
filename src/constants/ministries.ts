@@ -11,7 +11,7 @@ export const ministryLeaders: Person[] = [
     shortBio: "Pst Daniella Igharo leads the work of OneSound Charity UK.",
     fullBio:
       "Pst Daniella Igharo leads OneSound Charity UK as it carries out its charitable work and serves communities.",
-    image: { src: "", alt: "Pst Daniella Igharo" },
+    image: { src: "/assets/pst-daniella-igharo.jpg", alt: "Pst Daniella Igharo" },
     email: "",
     phone: "",
   },

@@ -22,16 +22,23 @@ export const aboutPage = {
     title: "One family with a shared spiritual heritage.",
     introduction:
       "Across our UK branches, we are a welcoming church family united by worship, the Word, prayer, discipleship, and a desire to serve the communities around us.",
-    vision: {
-      title: "Our Vision",
-      description:
-        "To raise a people rooted in God's Word, alive to His presence, and equipped to represent His kingdom in every sphere of life.",
-    },
-    mission: {
-      title: "Our Mission",
-      description:
-        "We gather people into worship and fellowship, teach the Word with clarity, nurture spiritual growth, and establish strong local churches that serve their communities.",
-    },
+    statements: [
+      {
+        title: "Our Vision",
+        description:
+          "To reveal JEHOVAH as Almighty all seeing, all knowing and all powerful and YESHUA His Son as the ONLY WAY to GOD and to Salvation.",
+      },
+      {
+        title: "Our Purpose",
+        description:
+          "To reveal the knowledge of the glory of God to the nations as the waters cover the seas, leading to the restoration of the fear of God and the salvation of this Generation.",
+      },
+      {
+        title: "Our Mission",
+        description:
+          "Holiness, sanctification and consecration to God.",
+      },
+    ],
     beliefs: [
       {
         id: "word",

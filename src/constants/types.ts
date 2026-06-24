@@ -71,6 +71,13 @@ export type Branch = {
   social: SocialLinks;
 };
 
+export type GalleryPhoto = {
+  src: string;
+  alt: string;
+  colSpan?: number;
+  rowSpan?: number;
+};
+
 export type GalleryItem = {
   id: string;
   title: string;

@@ -134,16 +134,17 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {[aboutPage.overview.vision, aboutPage.overview.mission].map(
-              (item, index) => (
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {aboutPage.overview.statements.map((item, index) => {
+              const colors = [
+                "border-amber-200 bg-[#fff7df]",
+                "border-sky-200 bg-sky-50",
+                "border-emerald-200 bg-emerald-50",
+              ];
+              return (
                 <article
                   key={item.title}
-                  className={`rounded-lg border p-7 sm:p-9 ${
-                    index === 0
-                      ? "border-amber-200 bg-[#fff7df]"
-                      : "border-sky-200 bg-sky-50"
-                  }`}
+                  className={`rounded-lg border p-7 sm:p-9 ${colors[index % colors.length]}`}
                 >
                   <h3 className="font-display text-4xl font-semibold">
                     {item.title}
@@ -152,8 +153,8 @@ export default function AboutPage() {
                     {item.description}
                   </p>
                 </article>
-              ),
-            )}
+              );
+            })}
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -208,25 +209,25 @@ export default function AboutPage() {
                 </div>
               </article>
 
-              <article className="flex flex-col justify-between rounded-lg border border-zinc-200 bg-zinc-950 p-7 text-white">
-                <div className="relative mx-auto aspect-square w-full max-w-52 overflow-hidden rounded-lg bg-white/8">
-                  <Image
-                    src={churchIdentity.logo.src}
-                    alt="Gospel Pillars Church logo placeholder"
-                    fill
-                    sizes="208px"
-                    className="object-contain p-10 opacity-45"
-                  />
-                </div>
-                <div className="mt-8">
+              <article className="relative overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950">
+                <Image
+                  src="/assets/prophet-and-wife.jpeg"
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 30vw, 92vw"
+                  className="object-cover blur-md brightness-[0.3]"
+                  aria-hidden="true"
+                />
+                <Image
+                  src="/assets/prophet-and-wife.jpeg"
+                  alt="Prophet Isaiah Macwealth and wife"
+                  fill
+                  sizes="(min-width: 1024px) 30vw, 92vw"
+                  className="object-cover p-1"
+                />
+                <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-zinc-950/80 to-transparent p-5">
                   <p className="text-sm font-bold tracking-[0.25em] text-amber-300 uppercase">
                     Prophet and Wife
-                  </p>
-                  <h3 className="font-display mt-3 text-3xl font-semibold">
-                    {aboutPage.leadership.wifePlaceholder.title}
-                  </h3>
-                  <p className="mt-4 leading-7 text-white/70">
-                    {aboutPage.leadership.wifePlaceholder.description}
                   </p>
                 </div>
               </article>
@@ -275,22 +276,38 @@ export default function AboutPage() {
                   {divisionLeader.fullBio}
                 </p>
               </div>
-              <div className="relative min-h-48 overflow-hidden rounded-lg border border-amber-200 bg-[#fff7df]">
-                <Image
-                  src={divisionLeader.image.src || churchIdentity.logo.src}
-                  alt={divisionLeader.image.alt || divisionLeader.name}
-                  fill
-                  sizes="(min-width: 640px) 35vw, 92vw"
-                  className={
-                    divisionLeader.image.src
-                      ? "object-cover object-top"
-                      : "object-contain p-14 opacity-35"
-                  }
-                />
-                {!divisionLeader.image.src && (
-                  <span className="absolute right-4 bottom-4 left-4 rounded-lg bg-white/90 px-3 py-2 text-center text-sm font-semibold text-zinc-700 backdrop-blur-sm">
-                    Official portrait coming soon
-                  </span>
+              <div className="relative min-h-52 overflow-hidden rounded-lg border border-amber-200 bg-zinc-950">
+                {divisionLeader.image.src ? (
+                  <>
+                    <Image
+                      src={divisionLeader.image.src}
+                      alt=""
+                      fill
+                      sizes="(min-width: 640px) 35vw, 92vw"
+                      className="object-cover blur-md brightness-[0.3]"
+                      aria-hidden="true"
+                    />
+                    <Image
+                      src={divisionLeader.image.src}
+                      alt={divisionLeader.image.alt || divisionLeader.name}
+                      fill
+                      sizes="(min-width: 640px) 35vw, 92vw"
+                      className="object-contain p-1"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={churchIdentity.logo.src}
+                      alt={divisionLeader.name}
+                      fill
+                      sizes="(min-width: 640px) 35vw, 92vw"
+                      className="object-contain p-14 opacity-35"
+                    />
+                    <span className="absolute right-4 bottom-4 left-4 rounded-lg bg-white/90 px-3 py-2 text-center text-sm font-semibold text-zinc-700 backdrop-blur-sm">
+                      Official portrait coming soon
+                    </span>
+                  </>
                 )}
               </div>
             </article>
@@ -320,14 +337,34 @@ export default function AboutPage() {
                 key={pastor.id}
                 className="overflow-hidden rounded-lg border border-amber-200 bg-white shadow-sm"
               >
-                <div className="relative h-40 bg-linear-to-br from-white via-amber-50 to-sky-100">
-                  <Image
-                    src={pastor.image.src || churchIdentity.logo.src}
-                    alt={pastor.image.alt || pastor.name}
-                    fill
-                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
-                    className="object-contain p-9 opacity-35"
-                  />
+                <div className="relative h-52 bg-[#fff7df]">
+                  {pastor.image.src ? (
+                    <>
+                      <Image
+                        src={pastor.image.src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
+                        className="object-cover blur-md brightness-[0.3]"
+                        aria-hidden="true"
+                      />
+                      <Image
+                        src={pastor.image.src}
+                        alt={pastor.image.alt || pastor.name}
+                        fill
+                        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
+                        className="object-contain p-2"
+                      />
+                    </>
+                  ) : (
+                    <Image
+                      src={churchIdentity.logo.src}
+                      alt={pastor.name}
+                      fill
+                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
+                      className="object-contain p-9 opacity-35"
+                    />
+                  )}
                 </div>
                 <div className="border-t border-amber-100 p-5">
                   <p className="text-xs font-bold tracking-[0.2em] text-amber-700 uppercase">
@@ -348,21 +385,41 @@ export default function AboutPage() {
         <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl overflow-hidden rounded-lg border border-amber-300 bg-linear-to-br from-zinc-950 via-zinc-900 to-amber-900 text-white shadow-2xl shadow-amber-950/15">
             <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="p-7 sm:p-10 lg:p-12">
-                <p className="text-sm font-bold tracking-[0.3em] text-amber-300 uppercase">
-                  {aboutPage.ministry.eyebrow}
-                </p>
-                <h2 className="font-display mt-5 text-5xl leading-none font-semibold sm:text-6xl">
-                  {oneSound.name}
-                </h2>
-                <p className="mt-5 text-xl font-semibold text-amber-200">
-                  Led by {oneSound.leader.name}
-                </p>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
-                  {oneSound.summary} {oneSound.description}
-                </p>
+              <div className="flex flex-col justify-center border-b border-white/15 sm:flex-row lg:border-r lg:border-b-0">
+                <div className="p-7 sm:p-10 lg:p-12">
+                  <p className="text-sm font-bold tracking-[0.3em] text-amber-300 uppercase">
+                    {aboutPage.ministry.eyebrow}
+                  </p>
+                  <h2 className="font-display mt-5 text-5xl leading-none font-semibold sm:text-6xl">
+                    {oneSound.name}
+                  </h2>
+                  <p className="mt-5 text-xl font-semibold text-amber-200">
+                    Led by {oneSound.leader.name}
+                  </p>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
+                    {oneSound.summary} {oneSound.description}
+                  </p>
+                </div>
+                {/* {oneSound.leader.image.src && (
+                  <div className="relative mx-auto aspect-3/4 w-full max-w-40 overflow-hidden rounded-lg border border-white/15">
+                    <Image
+                      src={oneSound.leader.image.src}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      className="object-cover blur-sm brightness-[0.3]"
+                      aria-hidden="true"
+                    />
+                    <Image
+                      src={oneSound.leader.image.src}
+                      alt={oneSound.leader.image.alt || oneSound.leader.name}
+                      fill
+                      sizes="160px"
+                      className="object-contain p-1"
+                    />
+                  </div>
+                )} */}
               </div>
-
               <div className="flex flex-col justify-center gap-6 border-t border-white/15 bg-white/6 p-7 sm:p-10 lg:border-t-0 lg:border-l">
                 <p className="text-sm font-bold tracking-[0.25em] text-amber-300 uppercase">
                   Connect with OneSound
