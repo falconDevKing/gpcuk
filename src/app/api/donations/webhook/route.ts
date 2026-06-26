@@ -2,6 +2,19 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createSupabaseServerClient } from "@/lib/supabase";
 
+console.log(
+  "process.env.STRIPE_SECRET_KEY",
+  process.env.STRIPE_SECRET_KEY,
+  "process.env.STRIPE_WEBHOOK_SECRET",
+  process.env.STRIPE_WEBHOOK_SECRET,
+);
+console.log(
+  "process.env.SUPABASE_URL",
+  process.env.SUPABASE_URL,
+  "process.env.SUPABASE_SERVICE_ROLE_KEY",
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+);
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
