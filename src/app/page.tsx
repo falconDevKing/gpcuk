@@ -39,7 +39,7 @@ const experienceColors = {
 
 export default function Home() {
   const prophet = getLeaderById(prophetFeature.personId);
-  const previewPhotos = galleryPhotos.slice(0, 9);
+  const previewPhotos = galleryPhotos.slice(0, 8);
 
   return (
     <main className="min-h-screen bg-[#fffdf7] text-zinc-950">

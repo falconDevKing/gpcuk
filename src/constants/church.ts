@@ -49,11 +49,10 @@ export const planVisitWhatsAppMessage =
 export const planVisitWhatsAppUrl = `${appContact.whatsappLink}?text=${encodeURIComponent(planVisitWhatsAppMessage)}`;
 
 export const giving = {
-  enabled: false,
-  url: "",
-  label: "Give Now",
+  enabled: true,
+  label: "Donate Now",
   unavailableLabel: "Giving details coming soon",
-  description: "",
+  description: "Support the work at Gospel Pillars Church UK",
 };
 
 export const seo = {

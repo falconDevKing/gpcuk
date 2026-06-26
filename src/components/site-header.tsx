@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Menu } from "lucide-react";
+import { CalendarDays, Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { GivingButton } from "@/components/giving/giving-button";
 import {
   churchIdentity,
   giving,
@@ -48,17 +49,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          {giving.enabled && giving.url ? (
-            <Button
-              asChild
-              variant="outline"
-              className="border-amber-300 bg-white text-zinc-950"
-            >
-              <Link href={giving.url}>
-                {giving.label}
-                <ArrowRight data-icon="inline-end" className="size-4" />
-              </Link>
-            </Button>
+          {giving.enabled ? (
+            <GivingButton variant="header" />
           ) : (
             <Button variant="outline" disabled>
               {giving.unavailableLabel}
@@ -89,7 +81,12 @@ export function SiteHeader() {
                 </Link>
               ))}
             </nav>
-            <Button asChild className="mt-3 w-full bg-amber-500 text-zinc-950">
+            {giving.enabled && (
+              <div className="mt-3">
+                <GivingButton variant="mobile" />
+              </div>
+            )}
+            <Button asChild className="mt-2 w-full bg-amber-500 text-zinc-950">
               <a href={planVisitWhatsAppUrl} target="_blank" rel="noreferrer">
                 Plan Your Visit
               </a>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { GivingButton } from "@/components/giving/giving-button";
 import {
   appContact,
   churchIdentity,
@@ -46,14 +47,8 @@ export function SiteFooter() {
                   <ArrowRight data-icon="inline-end" className="size-4" />
                 </a>
               </Button>
-              {giving.enabled && giving.url ? (
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-white/30 bg-white/10 text-white hover:bg-white hover:text-zinc-950"
-                >
-                  <Link href={giving.url}>{giving.label}</Link>
-                </Button>
+              {giving.enabled ? (
+                <GivingButton variant="footer" />
               ) : (
                 <Button
                   variant="outline"
