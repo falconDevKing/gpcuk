@@ -43,6 +43,7 @@ export async function POST(request: Request) {
           name: donorName,
           email,
           phone,
+          metadata: { platform: "gpc-uk" },
         });
       }
 
@@ -50,6 +51,7 @@ export async function POST(request: Request) {
         customer: customer.id,
         payment_method_types: ["card"],
         description: `${donorName} recurring donation setup`,
+        metadata: { platform: "gpc-uk" },
       });
 
       return NextResponse.json({
@@ -70,6 +72,7 @@ export async function POST(request: Request) {
         card: { request_three_d_secure: "any" },
       },
       metadata: {
+        platform: "gpc-uk",
         donor_name: donorName,
         donor_email: email,
         donor_phone: phone,

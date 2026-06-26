@@ -83,6 +83,7 @@ export async function POST(request: Request) {
       expand: ["latest_invoice.payment_intent"],
       proration_behavior: "none",
       trial_end: trialEnd,
+      metadata: { platform: "gpc-uk" },
     } as Stripe.SubscriptionCreateParams);
 
     // If charging now, create and pay first invoice immediately

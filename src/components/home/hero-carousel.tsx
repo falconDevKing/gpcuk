@@ -81,7 +81,7 @@ export function HeroCarousel({ slides, fallbackImage }: HeroCarouselProps) {
         );
       })}
 
-      <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-7xl items-center px-5 py-12 sm:px-8 lg:px-10">
+      <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-7xl items-center px-5 pt-12 pb-40 sm:px-8 sm:pb-44 lg:px-10">
         <div className="max-w-4xl rounded-lg border border-white/15 bg-zinc-950/45 p-6 text-white shadow-2xl shadow-zinc-950/40 backdrop-blur-md sm:p-8 lg:p-10">
           <div className="mb-9 inline-flex rounded-full border border-amber-300/60 px-4 py-2 text-xs font-bold tracking-[0.35em] text-amber-300 uppercase">
             {slide.label}

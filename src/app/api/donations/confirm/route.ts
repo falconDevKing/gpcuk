@@ -29,6 +29,13 @@ export async function POST(request: Request) {
     // Verify with Stripe that the payment actually succeeded
     const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
+    if (paymentIntent.metadata?.platform !== "gpc-uk") {
+      return NextResponse.json(
+        { error: "Payment not from this platform" },
+        { status: 400 },
+      );
+    }
+
     if (paymentIntent.status !== "succeeded") {
       return NextResponse.json(
         { error: `Payment not completed. Status: ${paymentIntent.status}` },

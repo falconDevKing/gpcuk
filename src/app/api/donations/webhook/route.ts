@@ -7,7 +7,13 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 interface InvoiceData {
   id: string;
-  subscription?: string | { id: string } | null;
+  parent?: {
+    type: string;
+    subscription_details?: {
+      subscription: string;
+      metadata?: Record<string, string>;
+    };
+  } | null;
   customer?: string | { id: string } | null;
   payment_intent?: string | { id: string } | null;
   amount_paid: number;
@@ -47,9 +53,12 @@ export async function POST(request: Request) {
     case "invoice.payment_succeeded": {
       const invoice = event.data.object as unknown as InvoiceData;
 
-      if (!invoice.subscription) break;
+      const subDetails = invoice.parent?.subscription_details;
+      if (!subDetails) break;
 
-      const subscriptionId = resolveId(invoice.subscription);
+      if (subDetails.metadata?.platform !== "gpc-uk") break;
+
+      const subscriptionId = subDetails.subscription;
       const customerId = resolveId(invoice.customer);
 
       let customerName = "";
