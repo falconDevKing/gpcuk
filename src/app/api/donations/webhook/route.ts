@@ -104,6 +104,12 @@ export async function POST(request: Request) {
       console.log("done to inserting");
       break;
     }
+
+    default:
+      return NextResponse.json({
+        received: true,
+        message: "No event of interest",
+      });
   }
 
   return NextResponse.json({ received: true });
