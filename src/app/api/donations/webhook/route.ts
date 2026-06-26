@@ -2,19 +2,6 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createSupabaseServerClient } from "@/lib/supabase";
 
-console.log(
-  "process.env.STRIPE_SECRET_KEY",
-  process.env.STRIPE_SECRET_KEY,
-  "process.env.STRIPE_WEBHOOK_SECRET",
-  process.env.STRIPE_WEBHOOK_SECRET,
-);
-console.log(
-  "process.env.SUPABASE_URL",
-  process.env.SUPABASE_URL,
-  "process.env.SUPABASE_SERVICE_ROLE_KEY",
-  process.env.SUPABASE_SERVICE_ROLE_KEY,
-);
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
@@ -42,6 +29,7 @@ function resolveId(field: string | { id: string } | null | undefined): string {
 export async function POST(request: Request) {
   const body = await request.text();
   const signature = request.headers.get("stripe-signature");
+  console.log("body", body, "headers", request.headers);
 
   if (!signature) {
     return NextResponse.json(
@@ -53,6 +41,7 @@ export async function POST(request: Request) {
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+    console.log("created event body", event);
   } catch {
     return NextResponse.json(
       { error: "Invalid webhook signature" },
@@ -64,6 +53,7 @@ export async function POST(request: Request) {
 
   switch (event.type) {
     case "invoice.payment_succeeded": {
+      console.log("eneterrd invoice.payment_succeeded case");
       const invoice = event.data.object as unknown as InvoiceData;
 
       const subDetails = invoice.parent?.subscription_details;
@@ -71,6 +61,10 @@ export async function POST(request: Request) {
 
       if (subDetails.metadata?.platform !== "gpc-uk") break;
 
+      console.log(
+        "confirmed subscription is uk platform",
+        subDetails.metadata?.platform,
+      );
       const subscriptionId = subDetails.subscription;
       const customerId = resolveId(invoice.customer);
 
@@ -91,6 +85,7 @@ export async function POST(request: Request) {
       const lastName = nameParts.slice(1).join(" ") || "";
       const paymentIntentId = resolveId(invoice.payment_intent) || null;
 
+      console.log("about to insert");
       await supabase.from("donations").insert({
         first_name: firstName,
         last_name: lastName,
@@ -106,6 +101,7 @@ export async function POST(request: Request) {
         stripe_status: "succeeded",
         donation_type: "recurring",
       });
+      console.log("done to inserting");
       break;
     }
   }
