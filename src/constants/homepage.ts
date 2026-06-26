@@ -24,6 +24,28 @@ export const heroSlides: HeroSlide[] = [
     primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },
+  {
+    id: "growth",
+    label: "Growth",
+    eyebrow: "Rooted in the Word, growing in grace.",
+    title: "Grow deeper in faith.",
+    description:
+      "Join Bible studies, discipleship programmes, and teaching that equips you for everyday life.",
+    image: { src: "", alt: "Gospel Pillars Church growth" },
+    primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
+    secondaryCta: { label: "View Locations", href: "/locations" },
+  },
+  {
+    id: "outreach",
+    label: "Outreach",
+    eyebrow: "Taking the gospel beyond our walls.",
+    title: "Be part of something greater.",
+    description:
+      "From local missions to global impact, join a church that serves its community and reaches the nations.",
+    image: { src: "", alt: "Gospel Pillars Church outreach" },
+    primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
+    secondaryCta: { label: "View Locations", href: "/locations" },
+  },
 ];
 
 export const welcomeContent = {
