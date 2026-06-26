@@ -9,7 +9,7 @@ export const heroSlides: HeroSlide[] = [
     title: "Experience God in a new way.",
     description:
       "Find belonging, encouragement, and a church family ready to welcome you.",
-    image: { src: "", alt: "Gospel Pillars Church worship" },
+    image: { src: "/assets/branches/london/14.webp", alt: "Gospel Pillars Church worship" },
     primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },
@@ -20,7 +20,7 @@ export const heroSlides: HeroSlide[] = [
     title: "Find faith, family and fellowship.",
     description:
       "Come as you are and discover a church family shaped by worship and the Word.",
-    image: { src: "", alt: "Gospel Pillars Church community" },
+    image: { src: "/assets/branches/london/1.webp", alt: "Gospel Pillars Church community" },
     primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },
@@ -31,7 +31,7 @@ export const heroSlides: HeroSlide[] = [
     title: "Grow deeper in faith.",
     description:
       "Join Bible studies, discipleship programmes, and teaching that equips you for everyday life.",
-    image: { src: "", alt: "Gospel Pillars Church growth" },
+    image: { src: "/assets/branches/sunderland/5.jpg", alt: "Gospel Pillars Church growth" },
     primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },
@@ -42,7 +42,7 @@ export const heroSlides: HeroSlide[] = [
     title: "Be part of something greater.",
     description:
       "From local missions to global impact, join a church that serves its community and reaches the nations.",
-    image: { src: "", alt: "Gospel Pillars Church outreach" },
+    image: { src: "/assets/branches/middlesborough/7.jpg", alt: "Gospel Pillars Church outreach" },
     primaryCta: { label: "Plan Your Visit", href: planVisitWhatsAppUrl },
     secondaryCta: { label: "View Locations", href: "/locations" },
   },

@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button";
 import type { HeroSlide, ImageData } from "@/constants";
 
 const slideAccents = [
-  "from-fuchsia-700/75 via-zinc-950/65 to-sky-800/65",
-  "from-amber-950/80 via-zinc-950/70 to-purple-900/55",
-  "from-sky-950/80 via-purple-950/60 to-emerald-900/60",
-  "from-zinc-950/90 via-amber-950/70 to-sky-900/70",
+  "from-fuchsia-700/30 via-zinc-950/25 to-sky-800/25",
+  "from-amber-950/35 via-zinc-950/30 to-purple-900/25",
+  "from-sky-950/35 via-purple-950/25 to-emerald-900/20",
+  "from-zinc-950/30 via-amber-950/25 to-sky-900/20",
 ];
 
 type HeroCarouselProps = {
@@ -74,15 +74,15 @@ export function HeroCarousel({ slides, fallbackImage }: HeroCarouselProps) {
               priority={index === 0}
             />
             <div
-              className={`absolute inset-0 bg-gradient-to-r ${slideAccents[index % slideAccents.length]}`}
+              className={`absolute inset-0 bg-linear-to-r ${slideAccents[index % slideAccents.length]}`}
             />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(234,179,8,0.28),transparent_28%),radial-gradient(circle_at_85%_20%,rgba(14,165,233,0.24),transparent_26%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(234,179,8,0.10),transparent_28%),radial-gradient(circle_at_85%_20%,rgba(14,165,233,0.10),transparent_26%)]" />
           </div>
         );
       })}
 
       <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-7xl items-center px-5 pt-12 pb-40 sm:px-8 sm:pb-44 lg:px-10">
-        <div className="max-w-4xl rounded-lg border border-white/15 bg-zinc-950/45 p-6 text-white shadow-2xl shadow-zinc-950/40 backdrop-blur-md sm:p-8 lg:p-10">
+        <div className="max-w-4xl rounded-lg border border-white/15 bg-zinc-950/20 p-6 text-white shadow-2xl shadow-zinc-950/20 backdrop-blur-xs sm:p-8 lg:p-10">
           <div className="mb-9 inline-flex rounded-full border border-amber-300/60 px-4 py-2 text-xs font-bold tracking-[0.35em] text-amber-300 uppercase">
             {slide.label}
           </div>
